@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import Form from 'next/form'
 import Logo from './Logo'
@@ -5,8 +7,12 @@ import HeaderMenu from './HeaderMenu'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 import { MobileDrawer } from './MobileDrawer'
+import { ClerkLoaded, SignInButton, SignOutButton, SignUpButton, UserButton, useUser } from '@clerk/nextjs'
+import { TrolleyIcon } from '@sanity/icons'
 
 export default function Header() {
+  const { user, isSignedIn } = useUser();
+
   return (
     <header>
       <div className="container flex items-center">
@@ -45,10 +51,40 @@ export default function Header() {
                 </li>
               </ul>
             </div>
-            <div className='hidden md:block pl-8 flex-0'>
-              <button className="text-gray-500 hover:text-brand-800 focus:outline-none font-small text-xs px-4 py-1.5">Log in</button>
-              <button className="text-white bg-brand-900 hover:bg-brand-800 focus:outline-none font-small rounded-full text-xs px-4 py-1.5">Sign in</button>
-            </div>
+            <ClerkLoaded>
+              {
+                isSignedIn ? (
+                  <div className='hidden md:flex items-center pl-8 flex-0'>
+                    <Link href={"/orders"}>
+                      <button className='relative flex items-center mr-4 text-gray-500 hover:bg-gray-100 focus:outline-none font-small rounded-lg text-xs px-2 py-1.5'>
+                        <TrolleyIcon className='size-6' />
+                        <span>My Orders</span>
+                        <div className="absolute inline-flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-brand-900 border-2 border-white rounded-full -top-2 -end-2 dark:border-gray-900">20</div>
+                      </button>
+                    </Link>
+                    <div className='flex items-center space-x-2 mr-4'>
+                      <UserButton />
+                      <div>
+                        <p className='text-xs text-gray-500'>Welcome back</p>
+                        <p className='text-md text-bold'>{user !== null ? user?.fullName : 'my friend'}</p>
+                      </div>
+                    </div>
+                    <SignOutButton>
+                      <button type="button" className="text-white bg-brand-900 hover:bg-brand-800 focus:outline-none font-small rounded-full text-xs px-4 py-1.5">Sign out</button>
+                    </SignOutButton>
+                  </div>
+                ) : (
+                <div className='hidden md:block pl-8 flex-0'>
+                  <SignInButton mode='modal'>
+                    <button className="text-gray-500 hover:text-brand-800 focus:outline-none font-small text-xs px-4 py-1.5">Sign in</button>
+                  </SignInButton>
+                  <SignUpButton mode='modal'>
+                    <button className="text-white bg-brand-900 hover:bg-brand-800 focus:outline-none font-small rounded-full text-xs px-4 py-1.5">Sign up</button>
+                  </SignUpButton>
+                </div>
+                )
+              }
+            </ClerkLoaded>
           </div>
         </nav>
       </div>

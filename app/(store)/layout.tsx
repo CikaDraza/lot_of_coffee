@@ -27,11 +27,17 @@ export default function RootLayout({
   return (
     <ClerkProvider dynamic>
       <html lang="en">
+        <head>
+          <meta
+            name="format-detection"
+            content="telephone=no, date=no, email=no, address=no"
+          />
+        </head>
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden min-h-screen`}
         >
           <Header />
-          <main>
+          <main className="py-20">
             {children}
           </main>
         </body>

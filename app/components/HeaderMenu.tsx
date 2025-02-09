@@ -17,39 +17,63 @@ import { ChevronDown } from "lucide-react"
 type Checked = DropdownMenuCheckboxItemProps["checked"]
 
 export default function HeaderMenu() {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true)
+  const [selectedItem, setSelectedItem] = React.useState("arabica")
   const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
   const [showPanel, setShowPanel] = React.useState<Checked>(false)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="ml-3 my-2 md:ml-0 md:my-0 flex justify-start items-center">
-        <Button className="hover:bg-transparent hover:text-brand-800 shadow-none focus:ring-0 focus:ring-gray-50 w-full p-0 h-auto text-xs" variant="ghost">
+        <Button className="hover:bg-transparent hover:text-brand-800 shadow-none focus:ring-0 focus:ring-gray-50 focus-visible:ring-0 focus-visible:outline-none w-full p-0 h-auto text-xs" variant="ghost">
           Menu
           <ChevronDown className="ml-1" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+        <DropdownMenuLabel>Our Products of Coffee</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
+          checked={selectedItem === "arabica"}
+          onCheckedChange={() => setSelectedItem("arabica")}
         >
-          Status Bar
+          Arabica
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
-          disabled
+          checked={selectedItem === "turkish"}
+          onCheckedChange={() => setSelectedItem("turkish")}
         >
-          Activity Bar
+          Turkish Coffee
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
+          checked={selectedItem === "blends"}
+          onCheckedChange={() => setSelectedItem("blends")}
         >
-          Panel
+          Blends
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuLabel>The best coffee accessories</DropdownMenuLabel>
+        <DropdownMenuCheckboxItem
+          checked={selectedItem === "grinder"}
+          onCheckedChange={() => setSelectedItem("grinder")}
+        >
+          Electronic coffee grinder
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={selectedItem === "server"}
+          onCheckedChange={() => setSelectedItem("server")}
+        >
+          Coffee server
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={selectedItem === "moka_pot"}
+          onCheckedChange={() => setSelectedItem("moka_pot")}
+        >
+          Moka Pot Cup
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          checked={selectedItem === "spoon"}
+          onCheckedChange={() => setSelectedItem("spoon")}
+        >
+          Digital spoon
         </DropdownMenuCheckboxItem>
       </DropdownMenuContent>
     </DropdownMenu>

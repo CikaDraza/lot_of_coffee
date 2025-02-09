@@ -60,7 +60,22 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+			keyframes: {
+        "bounce-in": {
+          "0%": { transform: "scale(0.8)", opacity: "0" },
+          "50%": { transform: "scale(1.1)", opacity: "1" },
+          "100%": { transform: "scale(1)" },
+        },
+        "fade-out": {
+          "0%": { opacity: "1", transform: "scale(1)" },
+          "100%": { opacity: "0", transform: "scale(0.9)" },
+        },
+      },
+      animation: {
+        "bounce-in": "bounce-in 0.5s ease-out",
+        "fade-out": "fade-out 0.3s ease-in",
+      },
   	}
   },
   // eslint-disable-next-line @typescript-eslint/no-require-imports
