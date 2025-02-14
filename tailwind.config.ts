@@ -10,6 +10,7 @@ export default {
   theme: {
   	extend: {
 			colors: {
+				brandBg: "#a7b7c5",
 				brand: {
           "800": "#7f3f23",
           "900": "#683728",

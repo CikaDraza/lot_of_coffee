@@ -14,6 +14,11 @@ body {
   width: 100%;
 }
 
+.carousel-happiest-hour > div {
+  padding: 6rem 0;
+  padding-top: 13rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

@@ -1,3 +1,4 @@
+import { CarouselCoffee } from "@/components/CarouselCoffee";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -11,7 +12,7 @@ export default function Home() {
     <div className="container">
       <section id="hero" className="grid grid-cols-2 gap-4">
         <div>
-          <div className="relative w-[445px] h-[145px]">
+          <div className="relative w-[700px] h-[191px]">
             <Image src={"/heading_hero.png"} alt="Coffee" fill />
           </div>
           <div className="grid grid-cols-2">
@@ -165,8 +166,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section id="coffe-to-go" className="py-20 my-20 grid grid-cols-2 gap-4">
-        <div className="py-20">
+      <section id="coffee-to-go" className="py-8 mt-16 grid grid-cols-2 gap-4">
+        <div className="py-8">
           <h2 className="text-7xl font-black tracking-tight text-brand-900">Coffee To Go</h2>
           <p className="text-gray-700 pt-6 pb-4">With so many options available at every coffee shop these days, choosing what to drink can seem a little intimidating. </p>
           <div className="w-fill h-[1px] bg-brand-900" />
@@ -213,10 +214,21 @@ export default function Home() {
           </div>
           <Button className="text-lg p-6">Order Now</Button>
         </div>
-        <div className="py-20">
+        <div className="py-8">
           <div className="relative w-[765.7px] h-[644.8px]">
             <Image src={"/coffee_to_go.png"} alt="Coffee" fill />
           </div>
+        </div>
+      </section>
+      <section id="coffee-happiest-hour" className="py-8">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="py-8 col-span-1 col-start-2">
+            <h2 className="text-7xl text-right font-black tracking-tight text-brand-900">The happiest hour<br/> of the year</h2>
+            <p className="text-right text-gray-700 pt-6 pb-4">Log in and get special price</p>
+          </div>
+        </div>
+        <div>
+          <CarouselCoffee className="hover:bg-brand-800" />
         </div>
       </section>
     </div>

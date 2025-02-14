@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -14,12 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { ChevronDown } from "lucide-react"
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
-
 export default function HeaderMenu() {
   const [selectedItem, setSelectedItem] = React.useState("arabica")
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false)
-  const [showPanel, setShowPanel] = React.useState<Checked>(false)
 
   return (
     <DropdownMenu>
@@ -39,10 +34,10 @@ export default function HeaderMenu() {
           Arabica
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
-          checked={selectedItem === "turkish"}
-          onCheckedChange={() => setSelectedItem("turkish")}
+          checked={selectedItem === "black"}
+          onCheckedChange={() => setSelectedItem("black")}
         >
-          Turkish Coffee
+          Black Coffee
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={selectedItem === "blends"}
